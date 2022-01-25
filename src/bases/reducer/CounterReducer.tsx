@@ -1,60 +1,24 @@
-import {useReducer, useState} from "react";
-import PropTypes from "prop-types";
-import {stat} from "fs";
+import {useReducer} from "react";
+import counterReducer from "./state/CounterReducer";
+import {CounterState} from "./interface/interfaces";
+import {doDecrement, doIncreaseBy, doReset} from "./actions/actions";
 
-interface CounterState {
-    counter: number;
-    previous: number;
-    changes: number;
-}
-
-const INITIAL_STATE = {
+const INITIAL_STATE: CounterState = {
     counter: 0,
     previous: 0,
     changes: 0
 }
 
-type CounterAction = {
-    type: 'increaseBy' | 'decrement' | 'reset';
-    payload?: { value: number };
-}
-
-const counterReducer = (state: CounterState, action: any): CounterState => {
-    switch (action.type) {
-        case 'increaseBy':
-            return {
-                ...state,
-                counter: state.counter + action.payload.value,
-                previous: state.counter,
-                changes: state.changes + 1
-            }
-        case 'reset':
-            return {
-                counter: 0,
-                previous: 0,
-                changes: 0
-            }
-        case 'decrement':
-            return {
-                counter: state.counter - 1,
-                previous: state.counter,
-                changes: state.changes + 1
-            }
-        default:
-            return state;
-    }
-}
-
 export const CounterReducerComponent = () => {
-    const [{counter, previous, changes}, dispatch] = useReducer(counterReducer, INITIAL_STATE);
+    const [{counter, changes}, dispatch] = useReducer(counterReducer, INITIAL_STATE);
 
-    const handleIncrease = (value: number) => dispatch({type: 'increaseBy', payload: {value}});
-    const handleDecrement = () => dispatch({type: 'decrement'});
-    const handleReset = () => dispatch({type: 'reset'});
+    const handleIncrease = (value: number) => dispatch(doIncreaseBy(value));
+    const handleDecrement = () => dispatch(doDecrement());
+    const handleReset = () => dispatch(doReset());
 
     return (
         <>
-            <h1>Counter Reducer: </h1>
+            <h1>Counter Reducer Srg: </h1>
             <h2>Count: {counter}</h2>
             <h2>Changes: {changes}</h2>
             <button onClick={() => handleIncrease(1)}>+1</button>

@@ -5,15 +5,30 @@ interface Props {
     initialValue?: number;
 }
 
-export const Counter = ({initialValue = 0}: Props) => {
-    const [count, setCount] = useState(initialValue);
+interface StateCounter {
+    counter: number;
+    clicks: number;
+}
 
-    const handleClick = () => setCount(prev => prev + 1);
+export const CounterBy = ({initialValue = 0}: Props) => {
+    const [{counter, clicks}, setCount] = useState<StateCounter>({
+        counter: initialValue,
+        clicks: 0
+    });
 
+    const handleClick = (value:number) => {
+        setCount(({clicks, counter}) => ({
+            counter: counter + value,
+            clicks: clicks + 1
+        }));
+    }
+    
     return (
         <>
-            <h1>Counter: {count}</h1>
-            <button onClick={handleClick}>+1</button>
+            <h1>CounterBY: {counter}</h1>
+            <h1>Clicks: {clicks}</h1>
+            <button onClick={() => handleClick(5)}>+5</button>
+            <button onClick={() => handleClick(1)}>+1</button>
         </>
     );
 }
