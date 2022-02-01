@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import {Suspense} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {Route, Routes, NavLink, Navigate} from 'react-router-dom';
 import {RoutesNav} from '../lazyload/router/Routes'
