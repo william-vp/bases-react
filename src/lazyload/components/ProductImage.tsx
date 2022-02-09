@@ -1,9 +1,16 @@
-import {useContext} from "react";
+import {CSSProperties, useContext} from "react";
 import noImage from "../../patrones/assets/no-image.jpg";
 import styles from "../../patrones/styles/styles.module.css";
 import {ProductContext} from "./ProductCard";
 
-export const ProductImage = ({img = ''}) => {
+export interface ImageProps {
+    img?: string;
+    className?: string;
+    activeClass?: string;
+    style?: CSSProperties
+}
+
+export const ProductImage = ({img = '', className= '', style } : ImageProps) => {
     const {product} = useContext(ProductContext)
     let imgShow: string;
     if (img) {
@@ -14,6 +21,6 @@ export const ProductImage = ({img = ''}) => {
         imgShow = noImage
     }
     return (
-        <img src={imgShow} className={styles.productImg} alt=""/>
+        <img src={imgShow} className={`${styles.productImg} ${className}`} alt={product ? product.title : 'image'} style={style} />
     );
 }

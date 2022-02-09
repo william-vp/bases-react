@@ -1,8 +1,11 @@
-import {ReactElement} from "react";
+import {CSSProperties, ReactElement} from "react";
+import {ButtonProps} from "../../lazyload/components/ProductButtons";
 
 export interface ProductCardProps {
     product: Product,
-    children?: ReactElement | ReactElement[]
+    children?: ReactElement | ReactElement[],
+    className?: string,
+    style?: CSSProperties
 }
 
 export interface Product {
@@ -19,7 +22,7 @@ export interface ProductContextProps {
 
 export interface ProductCardMainProps {
     ({children, product}: ProductCardProps): JSX.Element;
-    Title: ({title}: {title?: any}) => JSX.Element;
-    Image: ({image}: {image?: any}) => JSX.Element;
-    Buttons: () => JSX.Element;
+    Title: (Props: { title?: any, className?: string, style?: CSSProperties }) => JSX.Element;
+    Image: (Props: { image?: any, className?: string, style?: CSSProperties }) => JSX.Element;
+    Buttons: (Props: ButtonProps) => JSX.Element;
 }
