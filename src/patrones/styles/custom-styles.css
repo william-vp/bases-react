@@ -24,3 +24,9 @@
 .active button, .active div{
     border: 1px solid cyan!important;
 }
+
+.shopping-cart{
+    position: fixed;
+    top: 0;
+    right: 10px;
+}

@@ -5,7 +5,14 @@ export interface ProductCardProps {
     product: Product,
     children?: ReactElement | ReactElement[],
     className?: string,
-    style?: CSSProperties
+    style?: CSSProperties,
+    onChange?: (args: onChangeArgs) => void
+    value?: number
+}
+
+export interface onChangeArgs {
+    product: Product,
+    count: number,
 }
 
 export interface Product {
@@ -25,4 +32,8 @@ export interface ProductCardMainProps {
     Title: (Props: { title?: any, className?: string, style?: CSSProperties }) => JSX.Element;
     Image: (Props: { image?: any, className?: string, style?: CSSProperties }) => JSX.Element;
     Buttons: (Props: ButtonProps) => JSX.Element;
+}
+
+export interface ProductInCart extends Product {
+    count: number
 }
