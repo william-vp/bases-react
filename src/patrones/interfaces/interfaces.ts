@@ -3,11 +3,17 @@ import {ButtonProps} from "../../lazyload/components/ProductButtons";
 
 export interface ProductCardProps {
     product: Product,
-    children?: ReactElement | ReactElement[],
+    children: (args: ProductCardHandlers) => JSX.Element,
     className?: string,
     style?: CSSProperties,
     onChange?: (args: onChangeArgs) => void
-    value?: number
+    value?: number,
+    initialValues?: InitialValues
+}
+
+export interface InitialValues {
+    count?: number,
+    maxCount?: number
 }
 
 export interface onChangeArgs {
@@ -25,6 +31,7 @@ export interface ProductContextProps {
     product: Product;
     increment: (value: number) => void;
     counter: number;
+    maxCount?: number;
 }
 
 export interface ProductCardMainProps {
@@ -36,4 +43,13 @@ export interface ProductCardMainProps {
 
 export interface ProductInCart extends Product {
     count: number
+}
+
+export interface ProductCardHandlers{
+    count: number;
+    isMaxCountReached?: boolean;
+    maxCount?: number;
+    product: Product;
+    increment: (value: number) => void;
+    reset: () => void;
 }

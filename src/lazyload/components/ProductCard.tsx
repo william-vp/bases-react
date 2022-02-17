@@ -6,12 +6,12 @@ import {ProductContextProps, ProductCardProps} from "../../patrones/interfaces/i
 export const ProductContext = createContext({} as ProductContextProps);
 const {Provider} = ProductContext;
 
-export const ProductCard = ({children, product, className = '', style, onChange, value}: ProductCardProps) => {
-    const {counter, increment} = useProduct({product, onChange, value});
+export const ProductCard = ({children, product, className = '', style, onChange, value, initialValues}: ProductCardProps) => {
+    const {counter, increment, maxCount, reset, isMaxCountReached} = useProduct({product, onChange, value, initialValues});
     return (
-        <Provider value={{counter, increment, product}}>
+        <Provider value={{counter, increment, product, maxCount}}>
             <div className={`${styles.productCard} ${className}`} style={style}>
-                {children}
+                {children({count: counter, increment, product, isMaxCountReached, maxCount, reset})}
             </div>
         </Provider>
     )
