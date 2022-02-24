@@ -1,0 +1,108 @@
+[
+  {
+    "type": "text",
+    "name": "firstName",
+    "placeholder": "First Name",
+    "label": "First Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "First Name is required"
+      },
+      {
+        "type": "minLength",
+        "message": "First Name must be at least 2 characters",
+        "value": 2
+      },
+      {
+        "type": "maxLength",
+        "message": "First Name must be less than 10 characters",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "lastName",
+    "placeholder": "Last Name",
+    "label": "Last Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Last Name is required"
+      },
+      {
+        "type": "minLength",
+        "message": "Last Name must be at least 2 characters",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "Correo electrónico",
+    "label": "Correo electrónico",
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Email is required"
+      },
+      {
+        "type": "email",
+        "message": "Email is invalid"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "favoriteGame",
+    "placeholder": "Favorite Game",
+    "label": "Favorite Game",
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Favorite game is required"
+      }
+    ],
+    "options": [
+      {
+        "id": "1",
+        "description": "Super smash"
+      },
+      {
+        "id": "2",
+        "description": "Street Fighter"
+      },
+      {
+        "id": "3",
+        "description": "Fifa"
+      },
+      {
+        "id": "4",
+        "description": "Mario"
+      },
+      {
+        "id": "5",
+        "description": "Zelda"
+      }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "name": "terms",
+    "placeholder": "",
+    "label": "Terms and conditions",
+    "value": false,
+    "validations": [
+      {
+        "type": "required",
+        "message": "Accept terms and conditions"
+      }
+    ]
+  }
+]
